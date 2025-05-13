@@ -1,0 +1,343 @@
+create database Library_Management;
+USE Library_Management;
+
+select * from books;
+select * from authors;
+select * from borrow;
+select * from members;
+select * from staff;
+
+DESCRIBE books;
+DESCRIBE authors;
+DESCRIBE borrow;
+describe staff;
+DESCRIBE members;
+
+CREATE TABLE Books(
+BOOK_ID INT primary KEY ,
+TITTLE VARCHAR (200),
+AUTHORS_ID INT,
+GENRE varchar(100),
+publish_year YEAR,
+quantity INT
+);
+
+CREATE TABLE Authors(
+Author_id int,
+author_name varchar(100),
+country varchar(100)
+);
+
+CREATE TABLE Members(
+member_id int,
+member_name varchar(100),
+email varchar(100),
+phone int,
+joint_date date
+);
+
+CREATE TABLE Borrow(
+borrrow_id int,
+book_id int,
+member_id int,
+borrow_date date,
+return_date date
+);
+
+
+CREATE TABLE STAFF(
+staff_id int,
+staff_name varchar(100),
+staff_role varchar (100),
+join_date date 
+);
+
+-- values
+INSERT INTO Books  VALUES
+(1, 'Harry Potter and the Sorcerer''s Stone', 1, 'Fantasy', 1997, 5),
+(2, 'To Kill a Mockingbird', 2, 'Fiction', 1960, 3),
+(3, '1984', 3, 'Science Fiction', 1949, 4),
+(4, 'The Great Gatsby', 4, 'Fiction', 1925, 2),
+(5, 'The Hobbit', 5, 'Fantasy', 1937, 6),
+(6, 'Pride and Prejudice', 6, 'Romance', 1813, 3),
+(7, 'The Da Vinci Code', 7, 'Mystery', 2003, 5),
+(8, 'The Catcher in the Rye', 8, 'Fiction', 1951, 2),
+(9, 'The Lord of the Rings', 5, 'Fantasy', 1954, 4),
+(10, 'Brave New World', 9, 'Science Fiction', 1932, 3),
+(11, 'The Shining', 10, 'Horror', 1977, 5),
+(12, 'Moby Dick', 11, 'Adventure', 1851, 2),
+(13, 'The Alchemist', 12, 'Fiction', 1988, 6),
+(14, 'Gone Girl', 13, 'Mystery', 2012, 4),
+(15, 'Life of Pi', 14, 'Adventure', 2001, 3),
+(16, 'Dracula', 15, 'Horror', 1897, 5),
+(17, 'The Fault in Our Stars', 16, 'Romance', 2012, 4),
+(18, 'Sapiens: A Brief History of Humankind', 17, 'Non-fiction', 2011, 2),
+(19, 'The Girl with the Dragon Tattoo', 18, 'Mystery', 2005, 3),
+(20, 'The Chronicles of Narnia', 19, 'Fantasy', 1950, 5);
+
+
+
+
+INSERT INTO Authors  VALUES
+(1, 'J.K. Rowling', 'United Kingdom'),
+(2, 'Harper Lee', 'United States'),
+(3, 'George Orwell', 'United Kingdom'),
+(4, 'F. Scott Fitzgerald', 'United States'),
+(5, 'J.R.R. Tolkien', 'United Kingdom'),
+(6, 'Jane Austen', 'United Kingdom'),
+(7, 'Dan Brown', 'United States'),
+(8, 'J.D. Salinger', 'United States'),
+(9, 'Aldous Huxley', 'United Kingdom'),
+(10, 'Stephen King', 'United States'),
+(11, 'Herman Melville', 'United States'),
+(12, 'Paulo Coelho', 'Brazil'),
+(13, 'Gillian Flynn', 'United States'),
+(14, 'Yann Martel', 'Canada'),
+(15, 'Bram Stoker', 'Ireland'),
+(16, 'John Green', 'United States'),
+(17, 'Yuval Noah Harari', 'Israel'),
+(18, 'Stieg Larsson', 'Sweden'),
+(19, 'C.S. Lewis', 'United Kingdom'),
+(20, 'Agatha Christie', 'United Kingdom');
+
+
+INSERT INTO Members  VALUES
+(1, 'Arjun Kumar', 'arjun.kumar@email.com', '9876543210', '2023-01-10'),
+(2, 'Divya Sharma', 'divya.sharma@email.com', '8765432109', '2023-01-15'),
+(3, 'Rahul Singh', 'rahul.singh@email.com', '7654321098', '2023-02-01'),
+(4, 'Priya Nair', 'priya.nair@email.com', '6543210987', '2023-02-10'),
+(5, 'Vikram Das', 'vikram.das@email.com', '5432109876', '2023-03-05'),
+(6, 'Sneha Iyer', 'sneha.iyer@email.com', '4321098765', '2023-03-15'),
+(7, 'Karan Mehta', 'karan.mehta@email.com', '3210987654', '2023-04-01'),
+(8, 'Anjali Rao', 'anjali.rao@email.com', '2109876543', '2023-04-10'),
+(9, 'Ravi Patel', 'ravi.patel@email.com', '1098765432', '2023-05-01'),
+(10, 'Meera Menon', 'meera.menon@email.com', '9988776655', '2023-05-12'),
+(11, 'Siddharth Joshi', 'siddharth.joshi@email.com', '8877665544', '2023-06-01'),
+(12, 'Pooja Kapoor', 'pooja.kapoor@email.com', '7766554433', '2023-06-10'),
+(13, 'Amitabh Verma', 'amitabh.verma@email.com', '6655443322', '2023-07-01'),
+(14, 'Riya Sen', 'riya.sen@email.com', '5544332211', '2023-07-12'),
+(15, 'Manoj Chawla', 'manoj.chawla@email.com', '4433221100', '2023-08-01'),
+(16, 'Lakshmi Priya', 'lakshmi.priya@email.com', '9988001122', '2023-08-15'),
+(17, 'Rajesh Pillai', 'rajesh.pillai@email.com', '8877002211', '2023-09-01'),
+(18, 'Bhavana Reddy', 'bhavana.reddy@email.com', '7766003311', '2023-09-10'),
+(19, 'Deepak Kaur', 'deepak.kaur@email.com', '6655004411', '2023-10-01'),
+(20, 'Sahana Murthy', 'sahana.murthy@email.com', '5544005511', '2023-10-12');
+
+INSERT INTO Borrow  VALUES
+(1, 3, 1, '2024-01-10', '2024-01-20'),
+(2, 5, 2, '2024-01-12', '2024-01-22'),
+(3, 7, 3, '2024-01-15', '2024-01-25'),
+(4, 9, 4, '2024-01-17', '2024-01-27'),
+(5, 11, 5, '2024-01-20', '2024-01-30'),
+(6, 13, 6, '2024-01-22', '2024-02-01'),
+(7, 15, 7, '2024-01-25', '2024-02-04'),
+(8, 17, 8, '2024-01-28', '2024-02-07'),
+(9, 19, 9, '2024-01-30', '2024-02-09'),
+(10, 2, 10, '2024-02-01', '2024-02-11'),
+(11, 4, 11, '2024-02-03', '2024-02-13'),
+(12, 6, 12, '2024-02-05', '2024-02-15'),
+(13, 8, 13, '2024-02-07', '2024-02-17'),
+(14, 10, 14, '2024-02-09', '2024-02-19'),
+(15, 12, 15, '2024-02-11', '2024-02-21'),
+(16, 14, 16, '2024-02-13', '2024-02-23'),
+(17, 16, 17, '2024-02-15', '2024-02-25'),
+(18, 18, 18, '2024-02-17', '2024-02-27'),
+(19, 20, 19, '2024-02-19', '2024-02-29'),
+(20, 1, 20, '2024-02-21', '2024-03-02');
+
+INSERT INTO Staff VALUES
+(1, 'Arun Kumar', 'Librarian', '2022-01-10'),
+(2, 'Meera Singh', 'Assistant Librarian', '2022-02-15'),
+(3, 'Rohit Sharma', 'Data Entry Operator', '2022-03-01'),
+(4, 'Priya Das', 'Clerk', '2022-03-20'),
+(5, 'Siddharth Menon', 'Library Assistant', '2022-04-10'),
+(6, 'Divya Reddy', 'Technician', '2022-05-05'),
+(7, 'Vikas Jain', 'Security Staff', '2022-06-01'),
+(8, 'Sneha Rao', 'Accountant', '2022-07-10'),
+(9, 'Kiran Bhat', 'Maintenance Staff', '2022-08-01'),
+(10, 'Anjali Verma', 'Record Keeper', '2022-09-05'),
+(11, 'Rajesh Pillai', 'Library Assistant', '2022-10-01'),
+(12, 'Bhavana Nair', 'Clerk', '2022-11-15'),
+(13, 'Amit Kumar', 'Assistant Librarian', '2022-12-01'),
+(14, 'Riya Singh', 'Librarian', '2023-01-10'),
+(15, 'Raghav Gupta', 'Security Staff', '2023-02-05'),
+(16, 'Sumanth Rao', 'Technician', '2023-03-10'),
+(17, 'Nisha Patel', 'Accountant', '2023-04-01'),
+(18, 'Amitabh Verma', 'Data Entry Operator', '2023-05-15'),
+(19, 'Snehalata Gupta', 'Maintenance Staff', '2023-06-10'),
+(20, 'Kavitha Iyer', 'Record Keeper', '2023-07-20');
+
+ALTER TABLE Books MODIFY COLUMN publish_year INT;
+ALTER TABLE Members MODIFY COLUMN phone VARCHAR(15);
+
+
+SELECT staff_role, COUNT(*), GROUP_CONCAT(staff_name) AS staff_names
+FROM staff
+GROUP BY staff_role
+ORDER BY staff_role
+LIMIT 0, 2000;
+
+select  books.tittle,books.publish_year,Authors.author_name
+from books
+join authors
+on books.BOOK_ID=Authors.Author_id;
+
+
+
+SELECT books.BOOK_ID ,books.TITTLE, authors.author_name,books.publish_year, members.member_name, borrow.borrow_date, borrow.return_date 
+FROM borrow 
+JOIN books ON borrow.book_id = books.book_id 
+JOIN authors ON books.authors_id = authors.author_id 
+JOIN members ON borrow.member_id = members.member_id 
+order by books.book_id  
+LIMIT 5;
+
+
+select books.tittle, authors.author_name, authors.country,Members.member_name
+from books
+join authors on books.authors_id=authors.author_id
+join borrow on borrow.book_id=books.book_id
+join members on borrow.member_id=members.member_id
+order by books.tittle 
+limit 20 ;
+
+SELECT books.tittle, authors.country
+FROM books
+JOIN authors on authors.author_id=books.book_id
+WHERE authors.country = 'Israel'
+LIMIT 20;
+
+
+SELECT COUNT(*) AS name_count 
+FROM authors
+WHERE author_name LIKE '%____n';
+
+
+ select ucase(author_name) author_name,authors.country
+ from authors
+ order by author_name;
+ 
+ 
+show index from books;
+show index from authors;
+show index from borrow;
+show index from members;
+
+alter table borrow
+add column staff_id int;
+
+update borrow set staff_id =1 where borrow_id=20 limit 20;
+update borrow set staff_id=2 where borrrow_id =19 limit 20;
+update borrow set staff_id=3 where borrrow_id =18 limit 20;
+update borrow set staff_id=4 where borrrow_id =17 limit 20;
+update borrow set staff_id=5 where borrrow_id =16 limit 20;
+update borrow set staff_id=6 where borrrow_id =15 limit 20;
+update borrow set staff_id=7 where borrrow_id =14 limit 20;
+update borrow set staff_id=8 where borrrow_id =13 limit 20;
+update borrow set staff_id=9 where borrrow_id =13 limit 20;
+update borrow set staff_id=10 where borrrow_id =12 limit 20;
+update borrow set staff_id=11 where borrrow_id =11 limit 20;
+update borrow set staff_id=12 where borrrow_id =10 limit 20;
+update borrow set staff_id=13 where borrrow_id =9 limit 20;
+update borrow set staff_id=14 where borrrow_id =8 limit 20;
+update borrow set staff_id=15 where borrrow_id =6 limit 20;
+update borrow set staff_id=16 where borrrow_id =5 limit 20;
+update borrow set staff_id=17 where borrrow_id =4 limit 20;
+update borrow set staff_id=18 where borrrow_id =3 limit 20;
+update borrow set staff_id=19 where borrrow_id =2 limit 20;
+update borrow set staff_id=20 where borrrow_id =1 limit 20;
+
+select books.tittle,authors.author_name,staff.staff_name,members.member_name,borrow.borrow_date,borrow.return_date
+from borrow
+join books on books.book_id=borrow.book_id
+join authors on authors.author_id=books.authors_id
+join members on members.member_id=borrow.member_id
+join staff on staff.staff_id=borrow.staff_id
+
+order by books.tittle
+limit 10;
+
+SELECT authors.author_name, COUNT(*) AS total_books
+FROM books
+JOIN authors ON books.authors_id = authors.author_id
+GROUP BY authors.author_name
+HAVING COUNT(*) > 1;
+
+
+SELECT books.tittle, authors.author_name, books.publish_year
+FROM books
+JOIN authors ON books.AUTHORS_ID = authors.Author_id
+WHERE books.publish_year < 1950
+GROUP BY books.tittle, authors.author_name, books.publish_year;
+
+ select tittle,  count(*) 
+ from books
+ where publish_year =1964
+ group by TITTLE;
+ 
+SELECT books.tittle, authors.author_name, COUNT(books.TITTLE) AS total_books
+FROM authors
+JOIN books ON authors.Author_id = books.AUTHORS_ID
+GROUP BY authors.author_name
+HAVING COUNT(books.TITTLE) >1;
+
+SELECT a.author_name, b.tittle, b.publish_year
+FROM authors a
+JOIN books b ON a.author_id = b.authors_id
+WHERE a.author_id IN (
+    SELECT authors_id
+    FROM books
+    GROUP BY authors_id
+    HAVING COUNT(*) >1
+)
+ORDER BY a.author_name, b.publish_year;
+
+select books.tittle,members.member_name 
+from books
+join borrow on borrow.book_id=books.BOOK_ID
+join members on members.member_id=borrow.member_id;
+
+select books.TITTLE,authors.author_name,members.member_name,borrow.borrow_date,borrow.return_date
+from borrow
+join books on books.BOOK_ID=borrow.book_id
+join authors on authors.Author_id=books.AUTHORS_ID
+join members on members.member_id=borrow.member_id;
+
+
+select TITTLE,publish_year
+from books
+where publish_year between 1989 and 2020;
+
+
+select  publish_year,count(publish_year) as book_count
+from books
+where publish_year between 1989 and 2020
+group by   publish_year;
+                                                        -- 2012 --
+select books.TITTLE,authors.author_name,books.publish_year
+from books
+join authors on authors.Author_id=books.AUTHORS_ID
+where publish_year =2012;
+													   -- view --
+create view management
+as
+select books.BOOK_ID,books.TITTLE,books.publish_year,authors.author_name,staff.staff_name, members.member_name,borrow.borrow_date,borrow.return_date
+from borrow
+join books on books.BOOK_ID=borrow.book_id
+join authors on authors.Author_id=books.AUTHORS_ID
+join members on members.member_id=borrow.member_id
+join staff on staff.staff_id=borrow.staff_id
+where books.TITTLE ='The Hobbit';
+                                                        -- 1980 to2012--
+ select * from  management;
+ 
+select books.TITTLE, authors.author_name 
+from books 
+join authors on authors.Author_id=books.BOOK_ID
+where books.publish_year between 1980 and 2012
+order by books.TITTLE;
+
+
+
+
+ 
